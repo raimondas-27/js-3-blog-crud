@@ -16,6 +16,10 @@
       integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
       crossorigin="anonymous"
     />
+<!--    kelias yra nurodomas nuo static js, kuris aprasytas index.js-->
     <link rel="stylesheet" href="/css/style.css">
+    <% if (page === "createB") { %>
+    <script src="/js/create.js" defer type="module"></script>
+    <% } %>
   </head>
   <body class="container">

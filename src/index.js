@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 const blogData = require("./data/sampleBlog");
-const blogs = require("./data/blogDb");
+const blogDb = require("./data/blogDb");
 
 const app = express();
 const PORT = 5000;
@@ -67,10 +67,9 @@ app.use(express.static(staticPath));
 
 //blog api, noresim eiti i  /api/blog, gauti visus postus json pavidalu
 
-// const router = express.Router();
 
 app.get("/api/blog", (req, res) => {
-   res.json(blogs)
+   res.json(blogDb)
 });
 
 //404 case
