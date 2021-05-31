@@ -17,19 +17,34 @@ app.set("views", "src/views");
 app.get("/", function (req, res) {
    // res.sendFile(path.join(__dirname, "pages", "index.js"))
    //paimti index.ejs faila is views direktorijos
-   res.render("index")
+   res.render("index", {
+      title: "Home",
+      page : "home"
+   })
 });
 
 app.get("/about", function (req, res) {
    // res.sendFile(path.join(__dirname, "pages", "about.js"))
    res.render("about", {
       title : "About us",
+      page : "about",
    })
 });
 
 app.get("/blog", function (req, res) {
    // res.sendFile(path.join(__dirname, "pages", "blog.js"))
-   res.render("blog")
+   res.render("blog", {
+      title: "Blog",
+      page : "blog",
+   })
+});
+
+// contact page
+app.get('/contact', function (req, res) {
+  res.render('contact', {
+     title : "Contact us",
+     page : "contact",
+  });
 });
 
 //statine direktorija css,js,img ir kitiems statiniams failams
