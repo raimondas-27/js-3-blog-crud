@@ -1,81 +1,33 @@
-const express = require("express");
-const path = require("path");
-const blogData = require("./data/sampleBlog");
-const blogDb = require("./data/blogDb");
-
+const express = require('express');
 const app = express();
+const path = require('path');
+
 const PORT = 5000;
 
+const pageRoutes = require('./routes/pagesRoutes');
+const apiRoutes = require('./routes/api/apiRoutes');
 
-//register view engine
+// register view engine
+app.set('view engine', 'ejs');
+// nustatom render view home dir
+app.set('views', 'src/views');
 
-app.set("view engine", "ejs");
+//for req.body() to work
+app.use(express.json());
 
-//render views homedir
+// pages routes
+app.use('/', pageRoutes);
 
-app.set("views", "src/views");
+//api routes
+app.use('/api/blog', apiRoutes);
 
-
-app.get("/", function (req, res) {
-   // res.sendFile(path.join(__dirname, "pages", "index.js"))
-   //paimti index.ejs faila is views direktorijos
-   res.render("index", {
-      title: "Home",
-      page: "home",
-      blogData
-   })
-});
-
-app.get("/about", function (req, res) {
-   // res.sendFile(path.join(__dirname, "pages", "about.js"))
-   res.render("about", {
-      title: "About us",
-      page: "about",
-   })
-});
-
-app.get("/blog", function (req, res) {
-   // res.sendFile(path.join(__dirname, "pages", "blog.js"))
-   res.render("blog", {
-      title: "Blog",
-      page: "blog",
-      blogs
-   })
-});
-
-// contact page
-app.get('/contact', function (req, res) {
-   res.render('contact', {
-      title: "Contact us",
-      page: "contact",
-   });
-});
-
-
-//create blog page  /blog/create
-
-app.get("/blog/create", function (req, res) {
-   res.render("createBlog", {
-      title: "Create new Post",
-      page: "createB",
-   });
-})
-
-//statine direktorija css,js,img ir kitiems statiniams failams
-const staticPath = path.join(__dirname, "static")
+const staticPath = path.join(__dirname, 'static');
+// statine direktorija, css, js, img ir kt statiniam failam
 app.use(express.static(staticPath));
 
-//blog api, noresim eiti i  /api/blog, gauti visus postus json pavidalu
+// isitraukti api routes ir panaudoti cia kad veiktu
 
+// 404 case - kai vartojas ivede psl kurio nera
+app.use((req, res) => res.status(404).send('OOPs Page not found'));
 
-app.get("/api/blog", (req, res) => {
-   res.json(blogDb)
-});
-
-//404 case
-
-app.use((req, res) => {
-   res.status(404).send("page was not found :(")
-})
-
-app.listen(PORT, () => console.log("server is running"))
+app.listen(PORT);

@@ -6,6 +6,10 @@ export default class MyFetch {
    static async getPosts() {
       const res = await fetch(MyFetch.baseUrl)
       // console.log(data)
-      return await res.json();
+      return res.json();
    }
+
+   // static async createPost(data) {
+   //
+   // }
 }
