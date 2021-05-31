@@ -22,7 +22,9 @@ app.get("/", function (req, res) {
 
 app.get("/about", function (req, res) {
    // res.sendFile(path.join(__dirname, "pages", "about.js"))
-   res.render("about")
+   res.render("about", {
+      title : "About us",
+   })
 });
 
 app.get("/blog", function (req, res) {
