@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const blogData = require("./data/sampleBlog");
 
 const app = express();
 const PORT = 5000;
@@ -19,7 +20,8 @@ app.get("/", function (req, res) {
    //paimti index.ejs faila is views direktorijos
    res.render("index", {
       title: "Home",
-      page : "home"
+      page : "home",
+      blogData
    })
 });
 
