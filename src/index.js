@@ -21,7 +21,7 @@ app.get("/", function (req, res) {
    //paimti index.ejs faila is views direktorijos
    res.render("index", {
       title: "Home",
-      page : "home",
+      page: "home",
       blogData
    })
 });
@@ -29,8 +29,8 @@ app.get("/", function (req, res) {
 app.get("/about", function (req, res) {
    // res.sendFile(path.join(__dirname, "pages", "about.js"))
    res.render("about", {
-      title : "About us",
-      page : "about",
+      title: "About us",
+      page: "about",
    })
 });
 
@@ -38,26 +38,44 @@ app.get("/blog", function (req, res) {
    // res.sendFile(path.join(__dirname, "pages", "blog.js"))
    res.render("blog", {
       title: "Blog",
-      page : "blog",
+      page: "blog",
       blogs
    })
 });
 
 // contact page
 app.get('/contact', function (req, res) {
-  res.render('contact', {
-     title : "Contact us",
-     page : "contact",
-  });
+   res.render('contact', {
+      title: "Contact us",
+      page: "contact",
+   });
 });
+
+
+//create blog page  /blog/create
+
+app.get("/blog/create", function (req, res) {
+   res.render("createBlog", {
+      title: "Create new Post",
+      page: "createB",
+   });
+})
 
 //statine direktorija css,js,img ir kitiems statiniams failams
 const staticPath = path.join(__dirname, "static")
 app.use(express.static(staticPath));
 
+//blog api, noresim eiti i  /api/blog, gauti visus postus json pavidalu
+
+// const router = express.Router();
+
+app.get("/api/blog", (req, res) => {
+   res.json(blogs)
+});
+
 //404 case
 
-app.use((req,res) => {
+app.use((req, res) => {
    res.status(404).send("page was not found :(")
 })
 
