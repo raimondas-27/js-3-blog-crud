@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 
 
 router.post("/", (req, res) => {
-   res.json({msg : "testing"});
+   res.json({msg : "success", redirect : "/blog"});
 });
 
 module.exports = router;

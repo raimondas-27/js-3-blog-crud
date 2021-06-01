@@ -1,5 +1,6 @@
 export default class MyFetch {
    static baseUrl = "/api/blog";
+
    constructor() {}
 
 
@@ -9,7 +10,22 @@ export default class MyFetch {
       return res.json();
    }
 
-   // static async createPost(data) {
-   //
-   // }
+   /**
+    *
+    * @param {string} data //needs to be json format
+    * @param successCallback
+    */
+
+   static createPost(data,successCallback) {
+      fetch(MyFetch.baseUrl, {
+         method: "POST",
+         headers: {
+            "content-type": "application/json",
+         },
+         body: data
+      })
+          .then((response) => response.json())
+          .then((data) => successCallback(data))
+          .catch((error) => console.warn(error.message))
+   }
 }
