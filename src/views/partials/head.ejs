@@ -18,6 +18,9 @@
     />
 <!--    kelias yra nurodomas nuo static js, kuris aprasytas index.js-->
     <link rel="stylesheet" href="/css/style.css">
+    <% if (page === "singleP") { %>
+    <script src="/js/deleteSingle.js" defer type="module"></script>
+    <% } %>
     <% if (page === "createB") { %>
     <script src="/js/create.js" defer type="module"></script>
     <% } %>

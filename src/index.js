@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-
-const PORT = 5000;
+const mongoose = require("mongoose");
+const mongoDbString = require("./config/config");
 
 const pageRoutes = require('./routes/pagesRoutes');
 const apiRoutes = require('./routes/api/apiRoutes');
@@ -30,4 +30,10 @@ app.use(express.static(staticPath));
 // 404 case - kai vartojas ivede psl kurio nera
 app.use((req, res) => res.status(404).send('OOPs Page not found'));
 
-app.listen(PORT);
+//prisijungimas prie duombazes
+mongoose.connect(mongoDbString, {useNewUrlParser: true, useUnifiedTopology: true})
+    .then((result) => {
+       console.log("connected to mongoose")
+       app.listen(4000)
+    })
+    .catch((error) => console.warn(error))

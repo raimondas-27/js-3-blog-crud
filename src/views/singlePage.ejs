@@ -3,7 +3,7 @@
 <%- include('./partials/nav.ejs') %>
 
 
-<section class="jumbotron text-center">
+<section class="jumbotron text-center" data-post-id="<%= post._id %>">
     <div class="container">
         <h1><%= post.title %></h1>
         <h4>
@@ -13,8 +13,8 @@
             <%= post.body %>
         </p>
         <p>
-            <a href="#" class="btn btn-primary my-2">Edit</a>
-            <a href="#" class="btn btn-danger my-2">Delete</a>
+            <a href="/single/edit/<%= post._id %>" class="btn btn-primary my-2">Edit</a>
+            <a href="#" data-post-id="<%= post._id %>" id="delete" class="btn btn-danger my-2">Delete</a>
         </p>
     </div>
 </section>

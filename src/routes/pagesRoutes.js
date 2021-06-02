@@ -1,7 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-const blogDb = require('../data/blogDb');
+
+
+const Post = require("../models/post");
+
 
 // home page
 router.get('/', function (req, res) {
@@ -20,13 +23,17 @@ router.get('/about', function (req, res) {
   });
 });
 
+
 // blog page
-router.get('/blog', function (req, res) {
-  res.render('blog', {
-    title: 'Our blog',
-    page: 'blog',
-    blogDb,
-  });
+router.get("/blog", function (req, res) {
+  Post.find()
+      .then((result) => {
+        res.render('blog', {
+          title: 'Our blog',
+          page: 'blog',
+          result,
+        })
+      });
 });
 
 // contact page
@@ -39,6 +46,7 @@ router.get('/contact', function (req, res) {
 
 // create blog page /blog/create
 // contact page
+
 router.get('/blog/create', function (req, res) {
   res.render('createBlog', {
     title: 'Create new Post',
@@ -46,16 +54,32 @@ router.get('/blog/create', function (req, res) {
   });
 });
 
-router.get("/single/:id", function (req,res) {
+//find single post
+router.get("/single/:id", function (req, res) {
   const blogId = req.params.id
-  const found = blogDb.find((element) => element.id === +blogId)
-  //todo: redirect if not found or not id given
-  console.log(found)
-  res.render("singlePage", {
-    title: "singlePage",
-    page: "singleP",
-    post : found
-  })
+  Post.findById(blogId)
+      .then(result => {
+        res.render("singlePage", {
+          title: "singlePage",
+          page: "singleP",
+          post: result
+        })
+      })
 })
+
+//edit single post
+router.get("/single/edit/:id", function (req, res) {
+  const blogId = req.params.id
+  Post.findById(blogId)
+      .then(result => {
+        res.render("singlePageEdit", {
+          title: "singlePage",
+          page: "singleP-edit",
+          post: result
+        })
+      })
+})
+
+
 
 module.exports = router;

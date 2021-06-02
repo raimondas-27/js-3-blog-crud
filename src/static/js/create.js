@@ -1,23 +1,26 @@
-import MyFetch from "./class/MyFetch.js";
+import MyFetch from './class/MyFetch.js';
 
-MyFetch.getPosts()
-    .then(posts => console.log(posts))
-    .catch(error => console.warn(error.message));
+const mainForm = document.getElementById('create-post-form');
 
-const newPostData = {
-   title: "new post about birds",
-   author: "Jane Megan",
-   body: "this is essential to know",
-}
+mainForm.addEventListener('submit', function (event) {
+  event.preventDefault();
+  console.log('Stop right there, dont you dare to send it, I swear to God');
 
-const jsonData = JSON.stringify(newPostData);
+  // supakuojam formos duomenis
+  const fd = new FormData(mainForm);
+  // form data to json conversija
+  const fdJsonFormat = JSON.stringify(Object.fromEntries(fd));
 
-MyFetch.createPost(jsonData, (data) => {
-   if (data.redirect) {
-      console.log("redirecting to", data.redirect)
-      // window.location = data.redirect;
-   }
+  MyFetch.createPost(fdJsonFormat, (ats) => {
+    console.log(ats);
+    if (ats.redirect) {
+      // console.log('redirecting to', ats.redirect);
+      window.location = ats.redirect;
+    }
+  });
+
+
+
 });
-
 
 
