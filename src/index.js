@@ -6,6 +6,7 @@ const mongoDbString = require("./config/config");
 
 const pageRoutes = require('./routes/pagesRoutes');
 const apiRoutes = require('./routes/api/apiRoutes');
+const ownersRoutes = require("./routes/ownersRoutes")
 
 // register view engine
 app.set('view engine', 'ejs');
@@ -16,10 +17,14 @@ app.set('views', 'src/views');
 app.use(express.json());
 
 // pages routes
-app.use('/', pageRoutes);
+app.use("/", pageRoutes);
 
 //api routes
-app.use('/api/blog', apiRoutes);
+app.use("/api/blog", apiRoutes);
+
+// owners routes
+
+app.use("/owners", ownersRoutes)
 
 const staticPath = path.join(__dirname, 'static');
 // statine direktorija, css, js, img ir kt statiniam failam

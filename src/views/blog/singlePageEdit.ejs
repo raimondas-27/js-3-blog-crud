@@ -1,0 +1,28 @@
+<%- include('../partials/head.ejs') %>
+<!-- ikeliam bendra navigacijos faila -->
+<%- include('../partials/nav.ejs') %>
+
+
+<section class="jumbotron text-center">
+  <div class="container">
+    <form id="edit-form" data-post-id="<%= post._id %>">
+      <h1
+        ><input required type="text" class="form-control" name="title" value="<%= post.title %>"
+      /></h1>
+      <h4
+        ><input required type="text" class="form-control" name="author" value="<%= post.author %>"
+      /></h4>
+      <p class="lead text-muted">
+        <textarea type="text" class="form-control" name="body" required><%= post.body %></textarea>
+      </p>
+      <p class="lead text-muted"><%= post.updatedAt.toLocaleString() %> </p>
+      <p>
+        <a href="/blog" class="btn btn-success my-2">go back</a>
+        <button type="submit" class="btn btn-primary my-2">Save Post</button>
+      </p>
+    </form>
+  </div>
+</section>
+
+<!-- ikeliam bendra footer -->
+<%- include('../partials/footer.ejs') %>

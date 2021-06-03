@@ -2,7 +2,6 @@ import MyFetch from './class/MyFetch.js';
 
 const deleteBtn = document.querySelector("#delete");
 const currentPageId = deleteBtn.dataset.postId
-console.log(currentPageId);
 
 deleteBtn.addEventListener("click", function (event) {
    event.preventDefault()
@@ -14,11 +13,3 @@ deleteBtn.addEventListener("click", function (event) {
    })
 })
 
-
-//pasiimti mygtuka
-//pasiimame id
-//daryti fetch, jis gali buti tarp tu fetch
-
-// prie base prideti api.blog/:id
-
-console.log("single")

@@ -28,7 +28,7 @@ router.get('/about', function (req, res) {
 router.get("/blog", function (req, res) {
   Post.find()
       .then((result) => {
-        res.render('blog', {
+        res.render('blog/blog', {
           title: 'Our blog',
           page: 'blog',
           result,
@@ -48,7 +48,7 @@ router.get('/contact', function (req, res) {
 // contact page
 
 router.get('/blog/create', function (req, res) {
-  res.render('createBlog', {
+  res.render("blog/createBlog", {
     title: 'Create new Post',
     page: 'createB',
   });
@@ -59,7 +59,7 @@ router.get("/single/:id", function (req, res) {
   const blogId = req.params.id
   Post.findById(blogId)
       .then(result => {
-        res.render("singlePage", {
+        res.render("blog/singlePage", {
           title: "singlePage",
           page: "singleP",
           post: result
@@ -68,17 +68,21 @@ router.get("/single/:id", function (req, res) {
 })
 
 //edit single post
-router.get("/single/edit/:id", function (req, res) {
-  const blogId = req.params.id
+router.get('/single/edit/:id', (req, res) => {
+  const blogId = req.params.id;
+
   Post.findById(blogId)
-      .then(result => {
-        res.render("singlePageEdit", {
-          title: "singlePage",
-          page: "singleP-edit",
-          post: result
-        })
-      })
-})
+    .then((foundPost) => {
+      console.log(' foundPost', foundPost);
+      res.render('blog/singlePageEdit', {
+        title: 'Post about ...',
+        page: 'single_edit',
+        post: foundPost,
+      });
+    })
+    // redirect if not found
+    .catch((err) => res.redirect('/blog'));
+});
 
 
 

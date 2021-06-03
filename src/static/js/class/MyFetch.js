@@ -41,4 +41,18 @@ export default class MyFetch {
         .catch((err) => console.error(err.message))
   }
 
+  static updatePost(data, successCallback) {
+    console.log('updatePost');
+    fetch(MyFetch.baseUrl, {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: data,
+    })
+      .then((res) => res.json())
+      .then((data) => successCallback(data))
+      .catch((err) => console.error(err.message));
+  }
+
 }

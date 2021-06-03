@@ -28,7 +28,17 @@ router.delete("/:id", function (req, res) {
        .catch((err) => res.status(400).json(err));
 })
 
-router.put('/', )
+router.put('/', (req, res) => {
+  // res.json(req.body);
+  const { _id, title, author, body } = req.body;
+  Post.findByIdAndUpdate(_id, {
+    title,
+    author,
+    body,
+  })
+    .then((result) => res.json({ msg: 'success', redirect: '/blog' }))
+    .catch((err) => console.error(err.message));
+});
 
 
 module.exports = router;
