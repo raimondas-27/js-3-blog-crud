@@ -1,4 +1,4 @@
-import MyFetch from './class/MyFetch.js';
+import MyFetchBlog from '../class/MyFetchBlog.js';
 
 const mainForm = document.getElementById('create-post-form');
 
@@ -11,7 +11,7 @@ mainForm.addEventListener('submit', function (event) {
   // form data to json conversija
   const fdJsonFormat = JSON.stringify(Object.fromEntries(fd));
 
-  MyFetch.createPost(fdJsonFormat, (ats) => {
+  MyFetchBlog.createPost(fdJsonFormat, (ats) => {
     console.log(ats);
     if (ats.redirect) {
       // console.log('redirecting to', ats.redirect);

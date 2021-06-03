@@ -1,4 +1,4 @@
-import MyFetchOwner from './class/MyFetchOwner.js';
+import MyFetchOwner from '../class/MyFetchOwner.js';
 
 const mainOwnerForm = document.getElementById('create-owner-form');
 

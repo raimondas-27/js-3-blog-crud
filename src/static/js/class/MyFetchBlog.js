@@ -1,10 +1,10 @@
-export default class MyFetch {
+export default class MyFetchBlog {
   static baseUrl = '/api/blog';
 
   constructor() {}
 
   static async getPosts() {
-    const res = await fetch(MyFetch.baseUrl);
+    const res = await fetch(MyFetchBlog.baseUrl);
     const data = await res.json();
     // console.log(data)
     return data;
@@ -17,7 +17,7 @@ export default class MyFetch {
    * @param successCallback
    */
   static createPost(data, successCallback) {
-    fetch(MyFetch.baseUrl, {
+    fetch(MyFetchBlog.baseUrl, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -30,7 +30,7 @@ export default class MyFetch {
   }
 
   static deletePost(deleteId, successCallback) {
-    fetch(`${MyFetch.baseUrl}/${deleteId}`, {
+    fetch(`${MyFetchBlog.baseUrl}/${deleteId}`, {
       method : "DELETE",
       headers: {
         "content-type" : "application/json",
@@ -43,7 +43,7 @@ export default class MyFetch {
 
   static updatePost(data, successCallback) {
     console.log('updatePost');
-    fetch(MyFetch.baseUrl, {
+    fetch(MyFetchBlog.baseUrl, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',

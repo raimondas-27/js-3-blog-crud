@@ -1,6 +1,6 @@
 console.log('edit');
 
-import MyFetch from './class/MyFetch.js';
+import MyFetchBlog from '../class/MyFetchBlog.js';
 
 const editFrom = document.getElementById('edit-form');
 const currentId = editFrom.dataset.postId;
@@ -14,7 +14,7 @@ editFrom.addEventListener('submit', (event) => {
    // form data to json conversija
    const fdJsonFormat = JSON.stringify(Object.fromEntries(fd));
 
-   MyFetch.updatePost(fdJsonFormat, (ats) => {
+   MyFetchBlog.updatePost(fdJsonFormat, (ats) => {
       if (ats.redirect) {
          window.location = ats.redirect
       }

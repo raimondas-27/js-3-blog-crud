@@ -1,4 +1,4 @@
-import MyFetchOwner from './class/MyFetchOwner.js';
+import MyFetchOwner from '../class/MyFetchOwner.js';
 
 const deleteOwnerBtn = document.querySelector("#deleteOwner");
 const currentPageId = deleteOwnerBtn.dataset.postId
