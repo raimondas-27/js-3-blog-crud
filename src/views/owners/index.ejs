@@ -2,7 +2,31 @@
 <%- include('../partials/nav.ejs') %>
 
 <main role="main">
-<h1> This is the owners page</h1>
+    <h1 class="display-3"> This is our owners pagelist</h1>
+    <a href="/owners/new"> Add new owner </a>
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <% resultOwner.forEach((owner) => { %>
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <div class="card-body">
+                                <%- `<h5 class="card-title"> ${owner.name} </h5>` %>
+                                <%- `<h6 class="text-muted"> ${owner.email} </h6>` %>
+                            </div>
+                        </div>
+                        <div class="btn-group">
+                            <a href="/owners/singleOwner/<%= owner.id %>"
+                               class="btn btn-sm btn-outline-secondary">View</a>
+                            <a href="/singleOwner/edit/<%= owner.id %>"
+                               type="button"
+                               class="btn btn-sm btn-outline-secondary">Edit</a>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </div>
 </main>
 
 <%- include('../partials/footer.ejs') %>

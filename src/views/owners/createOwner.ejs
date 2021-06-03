@@ -1,0 +1,33 @@
+<%- include('../partials/head.ejs') %>
+<%- include('../partials/nav.ejs') %>
+
+<main>
+    <h1>Add new owner</h1>
+    <form id="create-owner-form" action="/api/owner" method="POST">
+        <div class="form-group">
+            <label for="title">Your Name</label>
+            <input
+                    required
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    name="name"
+                    placeholder="Enter name"
+            />
+        </div>
+        <div class="form-group">
+            <label for="author">Your Email</label>
+            <input
+                    required
+                    type="text"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    placeholder="Enter title"
+            />
+        </div>
+        <button type="submit" class="btn btn-primary">Add owner</button>
+    </form>
+</main>
+
+<%- include('../partials/footer.ejs') %>

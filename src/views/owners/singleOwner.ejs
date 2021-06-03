@@ -1,0 +1,22 @@
+<%- include('../partials/head.ejs') %>
+<!-- ikeliam bendra navigacijos faila -->
+<%- include('../partials/nav.ejs') %>
+
+
+<section class="jumbotron text-center" data-post-id="<%= owner._id %>">
+    <div class="container">
+        <h4>
+            <%= owner.name %>
+        </h4>
+        <p class="lead text-muted">
+            <%= owner.email %>
+        </p>
+        <p>
+            <a href="/single/edit/<%= owner._id %>" class="btn btn-primary my-2">Edit</a>
+            <a href="#" data-post-id="<%= owner._id %>" id="deleteOwner" class="btn btn-danger my-2">Delete</a>
+        </p>
+    </div>
+</section>
+
+<!-- ikeliam bendra footer -->
+<%- include('../partials/footer.ejs') %>
