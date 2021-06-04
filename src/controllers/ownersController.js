@@ -51,10 +51,16 @@ const edit_owners_single = (req, res) => {
        .catch((err) => res.redirect('/owners'));
 }
 
+const owner_search = (req, res) => {
+   console.log(req.query)
+   res.send("you are in right place")
+}
+
 
 module.exports = {
    owners_index,
    owners_new,
    owners_single,
    edit_owners_single,
+   owner_search,
 };

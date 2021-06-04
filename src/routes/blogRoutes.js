@@ -13,10 +13,10 @@ router.get('/blog/create', blogControllers.create_blog);
 
 
 //find single post
-router.get("/single/:id", blogControllers.blog_single);
+router.get("/blog/single/:id", blogControllers.blog_single);
 
 
 //edit single post
-router.get('/single/edit/:id', blogControllers.edit_blog_single);
+router.get("/blog/single/edit/:id", blogControllers.edit_blog_single);
 
 module.exports = router

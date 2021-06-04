@@ -16,8 +16,12 @@ router.get('/owners/new', ownersControllers.owners_new);
 router.get("/owners/singleOwner/:id",ownersControllers.owners_single);
 
 
-//edit single post
+//edit single owner
 router.get('/owners/singleOwner/edit/:id', ownersControllers.edit_owners_single);
 
+
+//search single owner
+
+router.get('/owners/search', ownersControllers.owner_search);
 
 module.exports = router;

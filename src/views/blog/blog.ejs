@@ -18,9 +18,10 @@
                                 >` %>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <a href="/single/<%= blog.id %>"
+                                        <a href="/blog/single/<%= blog.id %>"
                                            class="btn btn-sm btn-outline-secondary">View</a>
-                                        <a href="/single/edit/<%= blog.id %>" type="button"
+                                        <a href="/blog/single/edit/<%= blog.id %>"
+                                           type="button"
                                            class="btn btn-sm btn-outline-secondary">Edit</a>
                                     </div>
                                     <%- `<small class="text-muted"> ${blog.createdAt.toLocaleString()}</small>` %>

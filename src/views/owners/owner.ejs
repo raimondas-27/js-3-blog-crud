@@ -5,15 +5,9 @@
     <h1 class="display-3"> This is our owners pagelist</h1>
     <a href="/owners/new"> Add new owner </a>
 
-    <form>
-        <h4> You can search for your owners below here:</h4>
-        <label>
-            <input class="form-control" type="text" placeholder="enter owner">
-        </label>
-    </form>
-
     <div class="album py-5 bg-light">
         <div class="container">
+            <%- include ('_searchForm.ejs')%>
             <div class="row">
                 <% resultOwner.forEach((owner) => { %>
                     <div class="col-md-4">
@@ -26,7 +20,7 @@
                         <div class="btn-group">
                             <a href="/owners/singleOwner/<%= owner.id %>"
                                class="btn btn-sm btn-outline-secondary">View</a>
-                            <a href="owners/singleOwner/edit/<%= owner.id %>"
+                            <a href="/owners/singleOwner/edit/<%= owner.id %>"
                                type="button"
                                class="btn btn-sm btn-outline-secondary">Edit</a>
                         </div>
