@@ -2,12 +2,12 @@ const express = require('express');
 const router = express.Router();
 const Post = require("../../models/post")
 
-const blogDb = require('../../data/blogDb');
+
 
 // blog api
 // /api/blog gauti visu postus json pavidalu
 router.get('/', (req, res) => {
-   res.json(blogDb);
+   res.json({msg : "yes"});
 });
 
 // create new post

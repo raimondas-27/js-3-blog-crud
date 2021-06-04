@@ -20,4 +20,15 @@ router.delete("/:id", function (req, res) {
        .catch((err) => res.status(400).json(err));
 })
 
+router.put('/', (req, res) => {
+  // res.json(req.body);
+  const { _id, name, email } = req.body;
+  Owner.findByIdAndUpdate(_id, {
+    name,
+    email,
+  })
+    .then((result) => res.json({ msg: 'success', redirect: '/owners' }))
+    .catch((err) => console.error(err.message));
+});
+
 module.exports = router

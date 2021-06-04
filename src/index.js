@@ -8,6 +8,7 @@ const pageRoutes = require('./routes/pagesRoutes');
 const apiRoutes = require('./routes/api/apiRoutes');
 const ownersRoutes = require("./routes/ownersRoutes")
 const apiOwnerRoutes = require("./routes/api/apiOwnerRoutes");
+const blogRoutes = require("./routes/blogRoutes");
 
 // register view engine
 app.set('view engine', 'ejs');
@@ -19,7 +20,8 @@ app.use(express.json());
 
 // pages routes
 app.use("/", pageRoutes);
-app.use("/owners", ownersRoutes)
+app.use("/", ownersRoutes);
+app.use("/", blogRoutes);
 
 //api routes
 
