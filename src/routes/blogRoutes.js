@@ -1,56 +1,22 @@
 const express = require('express');
 const router = express.Router();
 const Post = require("../models/post");
+const blogControllers = require("../controllers/blogController")
 
-router.get("/blog", function (req, res) {
-   Post.find()
-       .then((result) => {
-          res.render('blog/blog', {
-             title: 'Our blog',
-             page: 'blog',
-             result,
-          })
-       });
-});
+
+//blog index
+router.get("/blog", blogControllers.blog_index);
+
 
 // create blog page /blog/create
-// contact page
+router.get('/blog/create', blogControllers.create_blog);
 
-router.get('/blog/create', function (req, res) {
-   res.render("blog/createBlog", {
-      title: 'Create new Post',
-      page: 'createB',
-   });
-});
 
 //find single post
-router.get("/single/:id", function (req, res) {
-   const blogId = req.params.id
-   Post.findById(blogId)
-       .then(result => {
-          res.render("blog/singlePage", {
-             title: "singlePage",
-             page: "singleP",
-             post: result
-          })
-       })
-})
+router.get("/single/:id", blogControllers.blog_single);
+
 
 //edit single post
-router.get('/single/edit/:id', (req, res) => {
-   const blogId = req.params.id;
-
-   Post.findById(blogId)
-       .then((foundPost) => {
-          console.log(' foundPost', foundPost);
-          res.render('blog/singlePageEdit', {
-             title: 'Post about ...',
-             page: 'single_edit',
-             post: foundPost,
-          });
-       })
-       // redirect if not found
-       .catch((err) => res.redirect('/blog'));
-});
+router.get('/single/edit/:id', blogControllers.edit_blog_single);
 
 module.exports = router

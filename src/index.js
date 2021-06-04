@@ -26,7 +26,7 @@ app.use("/", blogRoutes);
 //api routes
 
 app.use("/api/blog", apiRoutes);
-app.use("/api/owners", apiOwnerRoutes)
+app.use("/api/owners", apiOwnerRoutes);
 
 
 const staticPath = path.join(__dirname, 'static');
