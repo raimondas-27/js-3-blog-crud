@@ -1,19 +1,12 @@
 const express = require('express');
 const router = express.Router();
+const ownersControllers = require("../controllers/ownersController")
 
 const Owner = require("../models/owner");
 
+//load controllers
 
-router.get('/owners', (req, res) => {
-   Owner.find()
-       .then((resultOwner) => {
-          res.render("owners/owner", {
-             title: "Owners",
-             page: "owners",
-             resultOwner
-          })
-       })
-})
+router.get('/owners', ownersControllers.owners_index)
 
 router.get('/owners/new', (req, res) => {
    res.render("owners/createOwner", {
